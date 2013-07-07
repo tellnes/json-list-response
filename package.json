@@ -1,0 +1,30 @@
+{
+  "name": "json-list-response",
+  "version": "0.0.0",
+  "description": "json-list-response",
+  "main": "index.js",
+  "dependencies": {
+    "json-list-stream": "~0.0.1",
+    "xtend": "~2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tellnes/json-list-response.git"
+  },
+  "keywords": [
+    "json",
+    "list",
+    "stream",
+    "response",
+    "rows",
+    "transform"
+  ],
+  "author": {
+    "name": "Christian Tellnes",
+    "email": "christian@tellnes.no",
+    "url": "http://christian.tellnes.com"
+  },
+  "license": "MIT"
+}
