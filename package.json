@@ -1,6 +1,6 @@
 {
   "name": "json-list-response",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "json-list-response",
   "main": "index.js",
   "dependencies": {
