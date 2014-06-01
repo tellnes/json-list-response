@@ -6,10 +6,12 @@ var JSONListStream = require('json-list-stream')
 
 module.exports = JSONListResponse
 
+JSONListResponse.Query = Query
+
 function JSONListResponse(options) {
   JSONListStream.call(this)
 
-  this.query = options.query
+  this.query = new Query(options.query, options)
   this.base = options.base
   this.idField = options.idField || 'id'
 
@@ -36,6 +38,18 @@ JSONListResponse.prototype._transform = function (row, chunk, cb) {
 JSONListResponse.prototype._flush = function () {
   this.set('paging', new Paging(this))
   return JSONListStream.prototype._flush.apply(this, arguments)
+}
+
+function Query(query, options) {
+  if (query instanceof Query) return query
+
+  options = options || {}
+
+  var defaultLimit = options.defaultLimit || 1000
+    , maxLimit = options.maxLimit || 1000
+
+  this.after = query.after || null
+  this.limit = Math.min(Math.max( parseInt(query.limit, 10) || defaultLimit, 1), maxLimit)
 }
 
 function Paging(list) {
