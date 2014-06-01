@@ -52,8 +52,8 @@ function Paging(list) {
     var query = xtend(list.query)
     query.after = this.after
 
-    this.next = list.base
-              + '?'
-              + querystring.stringify(query)
+    this.next = list.base +
+                '?' +
+                querystring.stringify(query)
   }
 }
