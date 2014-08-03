@@ -26,5 +26,8 @@
     "email": "christian@tellnes.no",
     "url": "http://christian.tellnes.com"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
 }
