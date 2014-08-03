@@ -1,4 +1,4 @@
-var JSONListStream = require('./')
+var JSONListResponse = require('./')
   , http = require('http')
   , Readable = require('stream').Readable
   , inherits = require('util').inherits
@@ -35,7 +35,7 @@ MyReadable.prototype._read = function () {
   this.push({ n: this.counter++ })
 }
 
-http.createServer(function (req, res) {
+var server = http.createServer(function (req, res) {
   req.query = querystring.parse(req.url.slice(req.url.indexOf('?') + 1))
 
   var query = new Query(req)
@@ -45,10 +45,12 @@ http.createServer(function (req, res) {
                 }
 
   ;(new MyReadable(query))
-    .pipe(new JSONListStream(options))
+    .pipe(new JSONListResponse(options))
     .pipe(res)
 
-}).listen(PORT, function () {
+})
+
+server.listen(PORT, function () {
 
   var req = http.get( { port: PORT
                       , hostname: 'localhost'
@@ -58,6 +60,7 @@ http.createServer(function (req, res) {
 
   req.on('response', function (res) {
     res.pipe(process.stdout)
+    server.close()
   })
 
 })
