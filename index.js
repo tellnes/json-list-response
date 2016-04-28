@@ -81,7 +81,7 @@ function Paging(list) {
 
   this.after = list.after
 
-  if (list.base) {
+  if (this.hasMore && list.base) {
     var query = xtend(list.query)
     query.after = this.after.toString()
 
