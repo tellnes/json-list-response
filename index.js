@@ -77,7 +77,7 @@ After.prototype.toJSON = function () {
 function Paging(list) {
   this.after = null
   this.next = null
-  this.hasMore = list._count > list.query.limit
+  this.hasMore = list._count >= list.query.limit
 
   this.after = list.after
 
